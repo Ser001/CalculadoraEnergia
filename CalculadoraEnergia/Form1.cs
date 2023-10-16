@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 using System.Windows.Forms;
 
 namespace CalculadoraEnergia
@@ -19,7 +12,7 @@ namespace CalculadoraEnergia
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void buttonCalcular_Click(object sender, EventArgs e)
@@ -29,8 +22,11 @@ namespace CalculadoraEnergia
         double.TryParse(textBoxValorKWH.Text, out double valorKwh))
             {
                 double consumo = leituraAtual - leituraAnterior;
-                double total = consumo * valorKwh;
-                textBoxResultado.Text = total.ToString("C");
+                double total = consumo * valorKwh / 100;
+                textBoxResultado.Text = total.ToString("C2");
+
+                txtLeituraAtual.Text = leituraAtual.ToString("#,##0.00");
+                txtLeituraAnterior.Text = leituraAnterior.ToString("#,##0.00");
             }
             else
             {
@@ -61,5 +57,5 @@ namespace CalculadoraEnergia
             textBoxResultado.Clear();
         }
     }
-    }
+}
 
